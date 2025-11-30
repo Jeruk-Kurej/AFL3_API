@@ -1,4 +1,5 @@
 import { Order, Customer, Restaurant } from "../../generated/prisma/client";
+//harusnya sih ga perlu /client, tapi gara" versi 6.19 jadinya perlu
 
 export type OrderWithRelations = Order & {
   customer: Customer;

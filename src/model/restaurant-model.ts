@@ -1,4 +1,5 @@
 import { Restaurant } from "../../generated/prisma/client";
+//harusnya sih ga perlu /client, tapi gara" versi 6.19 jadinya perlu
 
 export interface RestaurantResponse {
   id: number;
