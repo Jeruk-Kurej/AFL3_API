@@ -38,7 +38,6 @@ function calculateETA(itemAmount: number, orderTime: Date): string {
 }
 
 export function toOrderResponse(order: OrderWithRelations): OrderResponse {
-  // ✅ Format orderTime juga
   const formattedOrderTime = order.order_time.toLocaleString('id-ID', {
     timeZone: 'Asia/Jakarta',
     year: 'numeric',
