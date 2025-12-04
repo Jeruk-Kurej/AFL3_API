@@ -4,6 +4,7 @@ import {
     RestaurantUpdateRequest 
 } from "../model/restaurant-model";
 import { RestaurantService } from "../service/restaurant-service";
+import { ResponseError } from "../error/response-error";
 
 export class RestaurantController {
 
@@ -22,7 +23,14 @@ export class RestaurantController {
 
     static async list(req: Request, res: Response, next: NextFunction) {
         try {
-            const status = req.query.status as string; 
+            const status = req.query.status as string | undefined;
+            
+            if (status && status !== 'opened' && status !== 'closed') {
+                throw new ResponseError(
+                    400, 
+                    "Invalid status parameter. Use 'opened' or 'closed', or omit for all restaurants."
+                );
+            }
             
             const response = await RestaurantService.list(status);
 
